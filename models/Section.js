@@ -6,6 +6,6 @@ const Section = sequelize.define('Section', {
     SectionName: { type: DataTypes.STRING(50), allowNull: false },
     SchoolYear: { type: DataTypes.STRING(10), allowNull: false },
     Semester: { type: DataTypes.STRING(10), allowNull: false }
-});
+}, { freezeTableName: true, timestamps: false });
 
 module.exports = Section;

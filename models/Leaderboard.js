@@ -6,6 +6,6 @@ const Leaderboard = sequelize.define('Leaderboard', {
     TotalScore: { type: DataTypes.INTEGER },
     Rank: { type: DataTypes.INTEGER },
     CompletionTime: { type: DataTypes.DECIMAL(8, 2) }
-});
+}, { freezeTableName: true, timestamps: false });
 
 module.exports = Leaderboard;

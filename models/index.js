@@ -29,8 +29,14 @@ CompletedProblemSets.belongsTo(ProblemSet, { foreignKey: 'ProblemSetID' });
 CompletedProblemSets.hasOne(Score, { foreignKey: 'CompletionID' });
 Score.belongsTo(CompletedProblemSets, { foreignKey: 'CompletionID' });
 
+Student.hasMany(Score, { foreignKey: 'StudentID' });
+Score.belongsTo(Student, { foreignKey: 'StudentID' });
+ProblemSet.hasMany(Score, { foreignKey: 'ProblemSetID' });
+Score.belongsTo(ProblemSet, { foreignKey: 'ProblemSetID' });
+
 Student.hasMany(Leaderboard, { foreignKey: 'StudentID' });
 Leaderboard.belongsTo(Student, { foreignKey: 'StudentID' });
+
 
 ProblemSet.hasMany(Leaderboard, { foreignKey: 'ProblemSetID' });
 Leaderboard.belongsTo(ProblemSet, { foreignKey: 'ProblemSetID' });

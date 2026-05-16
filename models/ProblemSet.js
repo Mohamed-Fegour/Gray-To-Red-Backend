@@ -9,6 +9,6 @@ const ProblemSet = sequelize.define('ProblemSet', {
     TimeLimit: { type: DataTypes.INTEGER },
     MemoryLimit: { type: DataTypes.INTEGER },
     CreatedDate: { type: DataTypes.DATEONLY }
-});
+}, { freezeTableName: true, timestamps: false });
 
 module.exports = ProblemSet;

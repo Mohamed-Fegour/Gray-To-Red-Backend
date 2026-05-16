@@ -9,6 +9,8 @@ const Professor = sequelize.define('Professor', {
     Email: { type: DataTypes.STRING(50), allowNull: false, unique: true },
     Password: { type: DataTypes.STRING(255), allowNull: false }
 }, {
+    freezeTableName: true,
+    timestamps: false,
     hooks: {
         beforeCreate: async (professor) => {
             professor.Password = await bcrypt.hash(professor.Password, 10);
