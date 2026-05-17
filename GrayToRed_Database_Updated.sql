@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS Leaderboard (
     StudentID BIGINT NOT NULL,
     ProblemSetID BIGINT NOT NULL,
     TotalScore INT,
-    Rank INT,
+    StudentRank INT,
     CompletionTime DECIMAL(8,2),
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
     FOREIGN KEY (ProblemSetID) REFERENCES ProblemSet(ProblemSetID)

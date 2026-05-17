@@ -6,7 +6,9 @@ const CompletedProblemSets = sequelize.define('CompletedProblemSets', {
     SubmittedCode: { type: DataTypes.TEXT('long') },
     CompileTime: { type: DataTypes.DECIMAL(6, 2) },
     ExecutionTime: { type: DataTypes.DECIMAL(6, 2) },
-    SubmissionDateTime: { type: DataTypes.DATE }
+    SubmissionDateTime: { type: DataTypes.DATE },
+    StudentID: { type: DataTypes.BIGINT, allowNull: false },
+    ProblemSetID: { type: DataTypes.BIGINT, allowNull: false }
 }, { freezeTableName: true, timestamps: false });
 
 module.exports = CompletedProblemSets;

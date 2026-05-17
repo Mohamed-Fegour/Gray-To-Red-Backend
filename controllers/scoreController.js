@@ -1,13 +1,19 @@
-const { Score, Leaderboard } = require('../models');
+const { Score, Leaderboard, CompletedProblemSets } = require('../models');
 
 exports.create = async (req, res) => {
     try {
         const score = await Score.create(req.body);
         
+        // Fetch the associated completion to get StudentID and ProblemSetID
+        const completion = await CompletedProblemSets.findByPk(req.body.CompletionID);
+        if (!completion) {
+            throw new Error('Completed problem set not found');
+        }
+
         // Auto-update/create leaderboard entry
         const [leaderboard, created] = await Leaderboard.findOrCreate({
-            where: { StudentID: req.body.StudentID, ProblemSetID: req.body.ProblemSetID },
-            defaults: { TotalScore: req.body.ScoreValue, Rank: 1 }
+            where: { StudentID: completion.StudentID, ProblemSetID: completion.ProblemSetID },
+            defaults: { TotalScore: req.body.ScoreValue, StudentRank: 1 }
         });
         
         if (!created) {
